@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[ItemController::class, 'showItem'])->name('home');
 
 // home
-// Route::get('/home',[ItemController::class, 'showItem'])->name('home');
+Route::get('/home',[ItemController::class, 'showItem'])->name('home');
 
 // cart
 Route::post('/cart/add/{itemId}', [CartController::class, 'addToCart'])->name('cart.add')->middleware('auth');
@@ -28,5 +28,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+//search
+Route::get('/search', [ItemController::class, 'search'])->name('search');
+
+// search
+Route::get('/items', [ItemController::class, 'search'])->name('items.search');
 
 require __DIR__.'/auth.php';

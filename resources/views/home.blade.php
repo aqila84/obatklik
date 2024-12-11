@@ -8,9 +8,9 @@
         <div class="row pt-2">
             <div class="col d-flex">
                 @foreach ($items as $item)
-                    <div class="card" style="width: 18rem;">
+                    <div class="card mx-2" style="width: 18rem;">
                         <div class="d-flex justify-content-center">
-                            <img src="{{asset('images/'.$item->itemPhoto)}}" class="card-img-top" alt="..." style="width: 200px;">
+                            <img src="{{asset('images/'.$item->itemPhoto)}}" class="card-img-top" alt="..." style="width: 200px; height: 200px; object-fit: contain;">
                         </div>
                         <div class="card-body">
                         <h5 class="card-title">{{$item->itemName}}</h5>
@@ -22,8 +22,7 @@
                         <div class="card-body">
                             <form action="{{route('cart.add', $item->id)}}" method="POST">
                                 @csrf
-                                {{-- <input type="number" name="qty" value="1" min="1"> --}}
-                                <button type="submit" class="btn btn-primary">Tambah ke Keranjang</button>
+                                <button type="submit" class="btn btn-primary">Add to Cart</button>
                             </form>
                         </div>
                     </div>
@@ -31,7 +30,7 @@
             </div>
         </div>
         <div class="row container">
-            {{-- {{$items->links()}} --}}
+            {{$items->links()}}
         </div>
     </div>
 </div>

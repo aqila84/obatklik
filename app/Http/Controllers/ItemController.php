@@ -21,5 +21,10 @@ class ItemController extends Controller
                     ->paginate(10); // Pagination
 
         return view('search_result', compact('items', 'query'));
+
+        $query = $request->input('query');
+        $items = $query ? Item::where('itemName', 'LIKE', "%{$query}%")->get() : Item::all();
+
+        return view('search', compact('items', 'query'));
     }
 }
